@@ -10,7 +10,7 @@ import hello.core.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy; //DIP만족 및 OCP 확장 열려있고 변경에는 닫쳐있다.
+    private final DiscountPolicy discountPolicy; //DIP만족 및 OCP 확장 열려있고 변경에는 닫아져있다.
 
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) { //외부에서 객체를 선언해서 받아옴 (DI)
