@@ -27,4 +27,12 @@ public class ConfigurationSingletonTest {
 
 
     }
+
+    @Test
+    void configurationDeep() { //임의의 다른 클래스가 바로 싱글톤을 보장하게 해줌.
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class); //Appconfig@CGLIB으로 가져온 것.
+
+        System.out.println("Bean : " + bean.getClass());
+    }
 }
