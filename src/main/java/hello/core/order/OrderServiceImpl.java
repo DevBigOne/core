@@ -8,10 +8,11 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor //final이 붙은 객체를 만들어줌
+// @RequiredArgsConstructor //final이 붙은 객체를 만들어줌
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository; // 생성자는 한번 만들어지면 바꿀 수 없다 - 불변. 필수 의존 관계를 사용함. 무조건 값이 있어야함.
@@ -20,6 +21,11 @@ public class OrderServiceImpl implements OrderService{
 
     // 생성자가 딱 한개 있으면 Autowired를 생략해도 됨.
     // setter를 쓸 때 set- , 필드 값을 메서드를 통해서 하는데 Autowired를 사용 가능함. 빈을 등록하면 의존관계가 같이 일어남.
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy DiscountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = DiscountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
