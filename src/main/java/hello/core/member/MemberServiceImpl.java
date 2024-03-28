@@ -9,8 +9,8 @@ public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
 
     @Autowired // 자동으로 의존관계 주입 ac.getBean(MemberRepositroy.class)
-    public MemberServiceImpl(MemberRepository MemberRepository) {
-        this.memberRepository = MemberRepository;
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
    @Override // 추상한 된 메소드를 구현하기 위해 오버라이드를 사용해야 스프링에서 알 수 있다.
